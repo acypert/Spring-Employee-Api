@@ -18,30 +18,40 @@ public class EmployeeService {
     }
 
     public Employee createEmployee(Employee employee) {
-        return null;
+        return employeeRepository.save(employee);
     }
 
     public Employee getEmployeeById(Long id) {
-        return null;
+        return employeeRepository.getOne(id);
     }
 
     public List<Employee> getAllEmployees() {
-        return null;
-    }
-
-    public Employee updateEmployeeById(Long id) {
-        return null;
+        return employeeRepository.findAll();
     }
 
     public Employee updateEmployee(Employee employee) {
-        return null;
+        if (employee.getId() != null && employeeRepository.existsById(employee.getId())) {
+            return employeeRepository.save(employee);
+        } else {
+            return null;
+        }
     }
 
     public boolean deleteEmployeeById(Long id) {
-        return false;
+        if (employeeRepository.existsById(id)) {
+            employeeRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean deleteEmployee(Employee employee) {
-        return false;
+        if (employee.getId() != null && employeeRepository.existsById(employee.getId())) {
+            employeeRepository.delete(employee);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
