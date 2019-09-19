@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
@@ -84,7 +83,6 @@ public class EmployeeServiceTest {
     public void updateEmployeeTestDoesntExist() {
         Employee employeeOriginal = new Employee(777451236, "Justin Brown");
         employeeRepository.save(employeeOriginal);
-        Long employeeId = employeeOriginal.getId();
 
         Employee employeeUpdated = new Employee(777451236, "Justin Bleach");
         Employee svcEmployee = employeeService.updateEmployee(employeeUpdated);

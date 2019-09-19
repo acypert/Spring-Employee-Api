@@ -31,7 +31,7 @@ public class EmployeeControllerTest {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    List<Employee> employees = new ArrayList<>();
+    private List<Employee> employees = new ArrayList<>();
 
     @Before
     public void setUp() {
